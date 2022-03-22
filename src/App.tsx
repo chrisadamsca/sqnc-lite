@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Clock } from './lib/Clock';
 
 function App() {
+
+  const [clock, setClock] = useState<Clock>();
+  
+  useEffect(() => {
+    if (clock) {
+      clock.start();
+    }
+  }, [clock])
+
+  const startClock = () => {
+    const clock = new Clock(new AudioContext());
+    clock.start();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={startClock}>Start</button>
       </header>
     </div>
   );
