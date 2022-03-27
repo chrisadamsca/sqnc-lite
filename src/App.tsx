@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Clock } from './lib/Clock';
+import './App.scss';
+import Home from './pages/Home/Home';
 
-function App() {
+const App = () => {
 
-  const [clock, setClock] = useState<Clock>();
+  // const [clock, setClock] = useState<Clock>();
   
-  useEffect(() => {
-    if (clock) {
-      clock.start();
-    }
-  }, [clock])
+  // useEffect(() => {
+  //   if (clock) {
+  //     clock.start();
+  //   }
+  // }, [clock])
 
-  const startClock = () => {
-    const clock = new Clock(new AudioContext());
-    clock.start();
-  }
+  
 
   return (
     <div className="App">
-      <header className="App-header">
-        <button onClick={startClock}>Start</button>
-      </header>
+      <Home />
     </div>
   );
 }
